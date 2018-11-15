@@ -10,5 +10,9 @@
   "task3" : {
     "task": "Practice code",
     "isCompleted": true
+  },
+    "task4" : {
+    "task": "Ride motorcycle",
+    "isCompleted": false
   }
 }
