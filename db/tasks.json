@@ -1,0 +1,18 @@
+{
+  "task1" : {
+    "task": "Feed the dog",
+    "isCompleted": false
+  },
+  "task2" : {
+    "task": "Empty trash",
+    "isCompleted": false
+  },
+  "task3" : {
+    "task": "Practice code",
+    "isCompleted": true
+  },
+    "task4" : {
+    "task": "Ride motorcycle",
+    "isCompleted": false
+  }
+}
