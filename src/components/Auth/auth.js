@@ -7,7 +7,7 @@ import './auth.scss';
 
 const loginBtn = () => {
   const domString = `
-    <button id="google-auth" class="btn btn-secondary">
+    <button id="google-auth" class="btn btn-secondary mt-5">
       <img src="${googleImage}">
     </button>
     `;
