@@ -13,7 +13,6 @@ const navbarEvents = () => {
         console.error('you are still logged in', err);
       });
     } else if (e.target.id === 'navbar-button-new') {
-      console.log('New clicked!');
       $('#new-task').show();
       addEditTask.formBuilder();
     } else {
