@@ -42,4 +42,17 @@ const tasksPage = () => {
     });
 };
 
+const deleteTask = (e) => {
+  const idToDelete = e.target.dataset.deleteId;
+  axios.delete(`${apiKeys.firebaseKeys.databaseURL}/tasks/${idToDelete}.json`)
+    .then(() => {
+      tasksPage();
+    })
+    .catch((error) => {
+      console.error('error in deleting friend', error);
+    });
+};
+
+$('body').on('click', '.delete-btn', deleteTask);
+
 export default { tasksPage };
