@@ -1,8 +1,5 @@
-import axios from 'axios';
 import $ from 'jquery';
-import apiKeys from '../../../db/apiKeys.json';
 import tasksData from '../../helpers/data/tasksData';
-// import authHelpers from '../Auth/auth';
 
 const printTasks = (tasksArray) => {
   let domString = '';
@@ -19,8 +16,8 @@ const printTasks = (tasksArray) => {
             </div>
           </div>
           <div class="card-footer text-muted">
-            <button class="delete-btn btn-xs btn-light delete-btn float-left" data-delete-id=${task.id}>
-              <img class="delete-img" src="https://iconsplace.com/wp-content/uploads/_icons/ff0000/256/png/trash-icon-14-256.png">
+            <button class="delete-btn btn-light delete-btn float-left" data-delete-id=${task.id}>
+              <img class="delete-img" data-delete-id=${task.id} src="https://iconsplace.com/wp-content/uploads/_icons/ff0000/256/png/trash-icon-14-256.png">
             </button>
             <button class="edit-btn btn-xs btn-light delete-btn float-right" data-edit-id=${task.id}>
               <img class="edit-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvky5A7hhi5PtxaTg30CYVUQLIHzD_IdkXCHwfBAf0K2_mCs6Uag">
@@ -46,7 +43,8 @@ const tasksPage = () => {
 
 const deleteTask = (e) => {
   const idToDelete = e.target.dataset.deleteId;
-  axios.delete(`${apiKeys.firebaseKeys.databaseURL}/tasks/${idToDelete}.json`)
+  console.log(idToDelete);
+  tasksData.deleteTaskData(idToDelete)
     .then(() => {
       tasksPage();
     })
