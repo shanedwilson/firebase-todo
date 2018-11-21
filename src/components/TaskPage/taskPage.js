@@ -8,13 +8,13 @@ const printTasks = (tasksArray) => {
   tasksArray.forEach((task) => {
     if (task.isCompleted === false) {
       domString += `
-      <div class="col-3">
+      <div class="col-3 mx-auto">
         <div class="card mt-5">
           <div class="card-body">
             <h5 class="card-title">${task.task}</h5>
             <div>
               Completed?
-              <input type="checkbox" aria-label="Checkbox for completed task">
+              <input class="completed-task" type="checkbox" aria-label="Checkbox for completed task">
             </div>
           </div>
           <div class="card-footer text-muted">
@@ -28,9 +28,9 @@ const printTasks = (tasksArray) => {
         </div>
       </div>
       `;
+      $('#tasks').html(domString);
     }
   });
-  $('#tasks').html(domString);
 };
 
 const tasksPage = () => {
