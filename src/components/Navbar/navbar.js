@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import addEditTask from '../AddEditTask/addEditTask';
 import './navbar.scss';
 
 const navbarEvents = () => {
@@ -11,6 +12,9 @@ const navbarEvents = () => {
       }).catch((err) => {
         console.error('you are still logged in', err);
       });
+    } else if (e.target.id === 'navbar-button-new') {
+      $('#new-task').show();
+      addEditTask.formBuilder();
     } else {
       $('#auth').show();
     }
@@ -28,7 +32,10 @@ const createNavbar = () => {
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <a id="navbar-button-auth" class="nav-link">Authentication</a>
-      </li>     
+      </li> 
+      <li class="nav-item">
+        <a id="navbar-button-new" class="nav-link">Create Task</a>
+      </li>           
       <li class="nav-item">
         <a id="navbar-button-logout" class="nav-link">Logout</a>
       </li>                 
