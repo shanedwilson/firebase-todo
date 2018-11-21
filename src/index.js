@@ -8,7 +8,6 @@ import navbar from './components/Navbar/navbar';
 import authHelpers from './helpers/authHelpers';
 import taskPage from './components/TaskPage/taskPage';
 
-
 import './index.scss';
 
 const initApp = () => {

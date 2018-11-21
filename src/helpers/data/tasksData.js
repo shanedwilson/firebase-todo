@@ -23,5 +23,6 @@ const getAllTasks = () => new Promise((resolve, reject) => {
 
 const deleteTaskData = taskId => axios.delete(`${firebaseUrl}/tasks/${taskId}.json`);
 
+const addNewTask = taskObject => axios.post(`${firebaseUrl}/tasks.json`, JSON.stringify(taskObject));
 
-export default { getAllTasks, deleteTaskData };
+export default { getAllTasks, deleteTaskData, addNewTask };
