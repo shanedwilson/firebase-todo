@@ -1,6 +1,7 @@
 import axios from 'axios';
 import $ from 'jquery';
 import apiKeys from '../../../db/apiKeys.json';
+import tasksData from '../../helpers/data/tasksData';
 // import authHelpers from '../Auth/auth';
 
 const printTasks = (tasksArray) => {
@@ -34,16 +35,8 @@ const printTasks = (tasksArray) => {
 };
 
 const tasksPage = () => {
-  axios.get(`${apiKeys.firebaseKeys.databaseURL}/tasks.json`)
-    .then((results) => {
-      const tasksObject = results.data;
-      const tasksArray = [];
-      if (tasksObject !== null) {
-        Object.keys(tasksObject).forEach((taskId) => {
-          tasksObject[taskId].id = taskId;
-          tasksArray.push(tasksObject[taskId]);
-        });
-      }
+  tasksData.getAllTasks()
+    .then((tasksArray) => {
       printTasks(tasksArray);
     })
     .catch((error) => {
