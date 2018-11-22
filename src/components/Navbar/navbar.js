@@ -14,7 +14,7 @@ const navbarEvents = () => {
       });
     } else if (e.target.id === 'navbar-button-new') {
       $('#new-task').show();
-      addEditTask.formBuilder();
+      addEditTask.showAddForm();
     } else {
       $('#auth').show();
     }
