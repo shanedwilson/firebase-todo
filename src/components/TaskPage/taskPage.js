@@ -21,8 +21,8 @@ const printTasks = (tasksArray) => {
             <button class="delete-btn btn-light delete-btn float-left" data-delete-id=${task.id}>
               <img class="delete-img" data-delete-id=${task.id} src="https://iconsplace.com/wp-content/uploads/_icons/ff0000/256/png/trash-icon-14-256.png">
             </button>
-            <button class="edit-btn btn-xs btn-light delete-btn float-right" data-edit-id=${task.id}>
-              <img class="edit-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvky5A7hhi5PtxaTg30CYVUQLIHzD_IdkXCHwfBAf0K2_mCs6Uag">
+            <button class="edit-btn btn-light edit-btn float-right" data-edit-id=${task.id}>
+              <img class="edit-img" data-edit-id=${task.id} src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Blue_pencil.svg/2000px-Blue_pencil.svg.png">
             </button>
           </div>
         </div>
@@ -53,8 +53,8 @@ const printCompletedTasks = (tasksArray) => {
             <button class="delete-btn btn-light delete-btn float-left" data-delete-id=${task.id}>
               <img class="delete-img" data-delete-id=${task.id} src="https://iconsplace.com/wp-content/uploads/_icons/ff0000/256/png/trash-icon-14-256.png">
             </button>
-            <button class="edit-btn btn-xs btn-light delete-btn float-right" data-edit-id=${task.id}>
-              <img class="edit-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvky5A7hhi5PtxaTg30CYVUQLIHzD_IdkXCHwfBAf0K2_mCs6Uag">
+            <button class="edit-btn btn-light edit-btn float-right" data-edit-id=${task.id}>
+              <img class="edit-img" data-edit-id=${task.id} src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Blue_pencil.svg/2000px-Blue_pencil.svg.png">
             </button>
           </div>
         </div>

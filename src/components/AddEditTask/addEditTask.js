@@ -57,7 +57,39 @@ const addNewTask = () => {
     });
 };
 
-$('body').on('click', '#save-task', addNewTask);
+const showEditForm = (e) => {
+  const idToEdit = e.target.dataset.editId;
+  console.log(idToEdit);
+  tasksData.getSingleTask(idToEdit)
+    .then((singleTask) => {
+      let domString = '<h2>Edit Task</h2>';
+      domString += formBuilder(singleTask);
+      domString += `<button id="edit-task" data-single-task-id="${singleTask.id}">Save Task</button>`;
+      $('#add-edit-task').html(domString).show();
+      $('#tasks').hide();
+      $('#completed').hide();
+    })
+    .catch((error) => {
+      console.error('error in getting single for edit', error);
+    });
+};
 
+const updateTask = (e) => {
+  const updatedTask = getTaskFromForm();
+  const taskId = e.target.dataset.singleEditId;
+  tasksData.updateTask(updatedTask, taskId)
+    .then(() => {
+      $('#add-edit-task').html('').hide();
+      $('#tasks').show();
+      taskPage.tasksPage();
+    })
+    .catch((error) => {
+      console.error('error', error);
+    });
+};
+
+$('body').on('click', '#save-task', addNewTask);
+$('body').on('click', '.edit-btn', showEditForm);
+$('body').on('click', '#edit-task', updateTask);
 
 export default { showAddForm };
