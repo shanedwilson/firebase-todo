@@ -15,7 +15,7 @@ const formBuilder = (task) => {
       <div class="input-group-prepend">
         <div class="input-group-text">Completed?</div>
       </div>   
-        <input type="text" class="form-control" value="${task.isCompleted}" id="form-task-name" placeholder="True/False">
+        <input type="text" class="form-control" value="${task.isCompleted}" id="form-task-completed" placeholder="True/False">
     </div>    
   </div>
   `;
@@ -23,9 +23,10 @@ const formBuilder = (task) => {
 };
 
 const getTaskFromForm = () => {
+  const completeBoo = JSON.parse($('#form-task-completed').val().toLowerCase());
   const task = {
     task: $('#form-task-name').val(),
-    isCompleted: false,
+    isCompleted: completeBoo,
   };
   return task;
 };
@@ -59,7 +60,6 @@ const addNewTask = () => {
 
 const showEditForm = (e) => {
   const idToEdit = e.target.dataset.editId;
-  console.log(idToEdit);
   tasksData.getSingleTask(idToEdit)
     .then((singleTask) => {
       let domString = '<h2>Edit Task</h2>';
@@ -76,11 +76,24 @@ const showEditForm = (e) => {
 
 const updateTask = (e) => {
   const updatedTask = getTaskFromForm();
-  const taskId = e.target.dataset.singleEditId;
+  const taskId = e.target.dataset.completedId;
+  tasksData.updateTask(updatedTask, taskId)
+    .then(() => {
+      $('#completed').show();
+      taskPage.tasksPage();
+    })
+    .catch((error) => {
+      console.error('error', error);
+    });
+};
+
+const completeTask = (e) => {
+  const updatedTask = getTaskFromForm();
+  const taskId = e.target.dataset.singleTaskId;
   tasksData.updateTask(updatedTask, taskId)
     .then(() => {
       $('#add-edit-task').html('').hide();
-      $('#tasks').show();
+      $('#completed').show();
       taskPage.tasksPage();
     })
     .catch((error) => {
@@ -91,5 +104,6 @@ const updateTask = (e) => {
 $('body').on('click', '#save-task', addNewTask);
 $('body').on('click', '.edit-btn', showEditForm);
 $('body').on('click', '#edit-task', updateTask);
+$('body').on('click', '.completed-task' completeTask);
 
 export default { showAddForm };

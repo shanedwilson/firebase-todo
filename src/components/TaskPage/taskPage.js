@@ -39,7 +39,7 @@ const printCompletedTasks = (tasksArray) => {
     if (task.isCompleted === true) {
       domString += `
       <div class="col-3 mx-auto">
-        <div class="card mt-5">
+        <div class="card mt-5" id=${task.id}>
           <div class="card-body">
             <h5 class="card-title">${task.task}</h5>
             <div class="form-check">
