@@ -76,20 +76,7 @@ const showEditForm = (e) => {
 
 const updateTask = (e) => {
   const updatedTask = getTaskFromForm();
-  const taskId = e.target.dataset.completedId;
-  tasksData.updateTask(updatedTask, taskId)
-    .then(() => {
-      $('#completed').show();
-      taskPage.tasksPage();
-    })
-    .catch((error) => {
-      console.error('error', error);
-    });
-};
-
-const completeTask = (e) => {
-  const updatedTask = getTaskFromForm();
-  const taskId = e.target.dataset.singleTaskId;
+  const taskId = e.target.dataset.singleTaskdId;
   tasksData.updateTask(updatedTask, taskId)
     .then(() => {
       $('#add-edit-task').html('').hide();
@@ -101,9 +88,26 @@ const completeTask = (e) => {
     });
 };
 
+const completeTask = (e) => {
+  const taskName = $(e.target).closest('.card-title').html();
+  console.log(taskName);
+  const updatedTask = {
+    task: e.target.dataset.completedTask,
+    isCompleted: e.target.checked,
+  };
+  const taskId = e.target.dataset.completedId;
+  tasksData.updateTask(updatedTask, taskId)
+    .then(() => {
+      taskPage.tasksPage();
+    })
+    .catch((error) => {
+      console.error('error', error);
+    });
+};
+
 $('body').on('click', '#save-task', addNewTask);
 $('body').on('click', '.edit-btn', showEditForm);
 $('body').on('click', '#edit-task', updateTask);
-$('body').on('click', '.completed-task' completeTask);
+$('body').on('click', '.card', completeTask);
 
 export default { showAddForm };

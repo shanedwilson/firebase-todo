@@ -9,9 +9,9 @@ const printTasks = (tasksArray) => {
       <div class="col-3 mx-auto">
         <div class="card mt-5">
           <div class="card-body">
-            <h5 class="card-title">${task.task}</h5>
+            <h5 class="card-title data-task-id=${task.task}">${task.task}</h5>
             <div class="form-check">
-              <input class="form-check-input completed-task" type="checkbox" value="${task.isCompleted}" data-completed-id=${task.id}>
+              <input class="form-check-input completed-task" type="checkbox" value="${task.isCompleted}" data-completed-id=${task.id} data-completed-task=${task.task}>
               <label class="form-check-label" for="defaultCheck1">
                 Completed?
               </label>
@@ -39,11 +39,11 @@ const printCompletedTasks = (tasksArray) => {
     if (task.isCompleted === true) {
       domString += `
       <div class="col-3 mx-auto">
-        <div class="card mt-5" id=${task.id}>
+        <div class="card mt-5 data-task-id=${task.task}" id=${task.id}>
           <div class="card-body">
             <h5 class="card-title">${task.task}</h5>
             <div class="form-check">
-              <input class="form-check-input completed-task" type="checkbox" value="${task.isCompleted}" data-completed-id=${task.id} checked>
+              <input class="form-check-input completed-task" type="checkbox" value="${task.isCompleted}" data-completed-id=${task.id} checked data-completed-task=${task.task}>
               <label class="form-check-label" for="defaultCheck1">
                 Completed?
               </label>
