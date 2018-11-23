@@ -41,7 +41,9 @@ const printCompletedTasks = (tasksArray) => {
       <div class="col-3 mx-auto">
         <div class="card mt-5 data-task-id=${task.task}" id=${task.id}>
           <div class="card-body">
+            <div class="title-container">
             <h5 class="card-title">${task.task}</h5>
+            </div>
             <div class="form-check">
               <input class="form-check-input completed-task" type="checkbox" value="${task.isCompleted}" data-completed-id=${task.id} checked data-completed-task=${task.task}>
               <label class="form-check-label" for="defaultCheck1">
