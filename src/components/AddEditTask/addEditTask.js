@@ -89,25 +89,28 @@ const updateTask = (e) => {
 };
 
 const completeTask = (e) => {
-  const taskName = $(e.target).closest('.card-title').html();
-  console.log(taskName);
-  const updatedTask = {
-    task: e.target.dataset.completedTask,
-    isCompleted: e.target.checked,
-  };
   const taskId = e.target.dataset.completedId;
-  tasksData.updateTask(updatedTask, taskId)
-    .then(() => {
-      taskPage.tasksPage();
+  tasksData.getSingleTask(taskId)
+    .then((singleTask) => {
+      const updatedTask = {
+        task: singleTask.task,
+        isCompleted: e.target.checked,
+      };
+      tasksData.updateTask(updatedTask, taskId)
+        .then(() => {
+          $('#tasks').html('');
+          $('#completed').html('');
+          taskPage.tasksPage();
+        });
     })
     .catch((error) => {
-      console.error('error', error);
+      console.error('error in getting single for completed', error);
     });
 };
 
 $('body').on('click', '#save-task', addNewTask);
 $('body').on('click', '.edit-btn', showEditForm);
 $('body').on('click', '#edit-task', updateTask);
-$('body').on('click', '.card', completeTask);
+$('body').on('click', completeTask);
 
 export default { showAddForm };
