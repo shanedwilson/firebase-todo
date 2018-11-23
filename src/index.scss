@@ -25,3 +25,13 @@ body {
 .input-group {
   width: 50%;
 }
+
+#completed {
+  .title-container {
+    color: red;  
+    text-decoration: line-through;
+  }
+  .card-title {
+    color: black;
+  }
+}
