@@ -6,15 +6,14 @@ const checkLoginStatus = () => {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       $('#auth').hide();
-      $('#tasks').show();
-      $('#completed-tasks').show();
+      $('#all-tasks').show();
       $('#navbar-button-auth').hide();
       $('#navbar-button-new').show();
       $('#navbar-button-logout').show();
     } else {
       $('#auth').show();
       $('#new-task').hide();
-      $('#tasks').hide();
+      $('#all-tasks').hide();
       $('#completed-tasks').hide();
       $('#navbar-button-auth').show();
       $('#navbar-button-new').hide();

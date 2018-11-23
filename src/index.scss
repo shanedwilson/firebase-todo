@@ -4,7 +4,7 @@ body {
   background-color: rgb(128, 204, 141);
 }
 
-#tasks {
+#tasks, #completed {
   width: 75%;
 }
 
@@ -14,8 +14,8 @@ body {
 }
 
 .edit-img {
-  max-width: 25px;
-  max-height: 25px;
+  max-width: 15px;
+  max-height: 15px;
 }
 
 #new-task {
