@@ -13,6 +13,7 @@ const printTasks = (tasksArray) => {
         <div class="card text-white bg-secondary mt-5">
           <div class="card-body">
             <h5 class="card-title data-task-id=${task.task}">${task.task}</h5>
+            <div class="card-timestamp">Todo since: ${task.created}</div>
             <div class="form-check">
               <input class="form-check-input completed-task" type="checkbox" value="${task.isCompleted}" data-completed-id=${task.id} data-completed-task=${task.task}>
               <label class="form-check-label" for="defaultCheck1">

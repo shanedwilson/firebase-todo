@@ -1,6 +1,7 @@
 import $ from 'jquery';
 import tasksData from '../../helpers/data/tasksData';
 import taskPage from '../TaskPage/taskPage';
+import timestamp from '../../helpers/timestamp';
 
 const formBuilder = (task) => {
   const form = `
@@ -26,6 +27,7 @@ const getTaskFromForm = () => {
   const completeBoo = JSON.parse($('#form-task-completed').val().toLowerCase());
   const task = {
     task: $('#form-task-name').val(),
+    created: timestamp.utcDate,
     isCompleted: completeBoo,
   };
   return task;
@@ -34,6 +36,7 @@ const getTaskFromForm = () => {
 const showAddForm = () => {
   const emptyTask = {
     task: '',
+    created: '',
     isCompleted: '',
   };
   let domString = '<h2 class="mt-5">Add New Task</h2>';
@@ -48,8 +51,7 @@ const addNewTask = () => {
   tasksData.addNewTask(newTask)
     .then(() => {
       $('#add-edit-task').html('').hide();
-      $('#tasks').show();
-      $('#completed').show();
+      $('#all-tasks').show();
       taskPage.tasksPage();
     })
     .catch((error) => {
@@ -74,11 +76,11 @@ const showEditForm = (e) => {
 
 const updateTask = (e) => {
   const updatedTask = getTaskFromForm();
-  const taskId = e.target.dataset.singleTaskdId;
+  const taskId = e.target.dataset.singleTaskId;
   tasksData.updateTask(updatedTask, taskId)
     .then(() => {
       $('#add-edit-task').html('').hide();
-      $('#completed').show();
+      $('#all-tasks').show();
       taskPage.tasksPage();
     })
     .catch((error) => {
@@ -92,6 +94,7 @@ const completeTask = (e) => {
     .then((singleTask) => {
       const updatedTask = {
         task: singleTask.task,
+        created: timestamp.utcDate,
         isCompleted: e.target.checked,
       };
       tasksData.updateTask(updatedTask, taskId)
