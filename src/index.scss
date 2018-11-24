@@ -2,6 +2,12 @@
 
 body {
   background-color: rgb(128, 204, 141);
+  background-image: url("https://png.pngtree.com/element_origin_min_pic/17/08/05/8ba05af80d01df4f8d3167bf24383d9f.jpg");
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
 #tasks, #completed {
@@ -32,6 +38,12 @@ body {
     text-decoration: line-through;
   }
   .card-title {
-    color: black;
+    color: white;
   }
+}
+
+#add-edit-task{
+  background-color: grey;
+  width: 75%;
+  margin-top: 15%;
 }

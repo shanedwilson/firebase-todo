@@ -7,7 +7,7 @@ const formBuilder = (task) => {
   <div class="form-group mt-5">
     <div class="input-group mb-2 mx-auto">
       <div class="input-group-prepend">
-        <div class="input-group-text">New Task</div>
+        <div class="input-group-text">Task</div>
       </div>    
         <input type="text" class="form-control" value="${task.task}" id="form-task-name" placeholder="Sample Task">
     </div> 
@@ -38,10 +38,9 @@ const showAddForm = () => {
   };
   let domString = '<h2 class="mt-5">Add New Task</h2>';
   domString += formBuilder(emptyTask);
-  domString += '<button id="save-task">Save Task</button>';
+  domString += '<button class="mb-3" id="save-task">Save Task</button>';
+  $('#all-tasks').hide();
   $('#add-edit-task').html(domString).show();
-  $('#tasks').hide();
-  $('#completed').hide();
 };
 
 const addNewTask = () => {
@@ -62,12 +61,11 @@ const showEditForm = (e) => {
   const idToEdit = e.target.dataset.editId;
   tasksData.getSingleTask(idToEdit)
     .then((singleTask) => {
-      let domString = '<h2>Edit Task</h2>';
+      let domString = '<h2 class="mt-5">Edit Task</h2>';
       domString += formBuilder(singleTask);
-      domString += `<button id="edit-task" data-single-task-id="${singleTask.id}">Save Task</button>`;
+      domString += `<button class="mb-3" id="edit-task" data-single-task-id="${singleTask.id}">Save Task</button>`;
       $('#add-edit-task').html(domString).show();
-      $('#tasks').hide();
-      $('#completed').hide();
+      $('#all-tasks').hide();
     })
     .catch((error) => {
       console.error('error in getting single for edit', error);
