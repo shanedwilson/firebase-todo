@@ -1,4 +1,7 @@
-const dt = new Date();
-const utcDate = dt.toLocaleString();
+const currentTime = () => {
+  const dt = new Date();
+  const utcDate = dt.toLocaleString();
+  return utcDate;
+};
 
-export default { utcDate };
+export default { currentTime };

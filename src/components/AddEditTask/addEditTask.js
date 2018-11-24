@@ -25,9 +25,10 @@ const formBuilder = (task) => {
 
 const getTaskFromForm = () => {
   const completeBoo = JSON.parse($('#form-task-completed').val().toLowerCase());
+  const utcDate = timestamp.currentTime();
   const task = {
     task: $('#form-task-name').val(),
-    created: timestamp.utcDate,
+    created: utcDate,
     isCompleted: completeBoo,
   };
   return task;
@@ -92,9 +93,10 @@ const completeTask = (e) => {
   const taskId = e.target.dataset.completedId;
   tasksData.getSingleTask(taskId)
     .then((singleTask) => {
+      const utcDate = timestamp.currentTime();
       const updatedTask = {
         task: singleTask.task,
-        created: timestamp.utcDate,
+        created: utcDate,
         isCompleted: e.target.checked,
       };
       tasksData.updateTask(updatedTask, taskId)
