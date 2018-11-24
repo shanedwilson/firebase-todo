@@ -25,7 +25,6 @@ const getSingleTask = taskId => new Promise((resolve, reject) => {
   axios.get(`${firebaseUrl}/tasks/${taskId}.json`)
     .then((result) => {
       const singleTask = result.data;
-      console.log(singleTask);
       singleTask.id = taskId;
       resolve(singleTask);
     })

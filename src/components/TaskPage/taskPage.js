@@ -1,5 +1,8 @@
 import $ from 'jquery';
 import tasksData from '../../helpers/data/tasksData';
+import timestamp from '../../helpers/timestamp';
+
+console.log(timestamp.utcDate);
 
 const printTasks = (tasksArray) => {
   let domString = '';
@@ -7,9 +10,10 @@ const printTasks = (tasksArray) => {
     if (task.isCompleted === false) {
       domString += `
       <div class="col-3 mx-auto">
-        <div class="card mt-5">
+        <div class="card text-white bg-secondary mt-5">
           <div class="card-body">
             <h5 class="card-title data-task-id=${task.task}">${task.task}</h5>
+            <div class="card-timestamp">Todo since: ${task.created}</div>
             <div class="form-check">
               <input class="form-check-input completed-task" type="checkbox" value="${task.isCompleted}" data-completed-id=${task.id} data-completed-task=${task.task}>
               <label class="form-check-label" for="defaultCheck1">
@@ -39,7 +43,7 @@ const printCompletedTasks = (tasksArray) => {
     if (task.isCompleted === true) {
       domString += `
       <div class="col-3 mx-auto">
-        <div class="card mt-5 data-task-id=${task.task}" id=${task.id}>
+        <div class="card text-white bg-secondary mt-5 data-task-id=${task.task}" id=${task.id}>
           <div class="card-body">
             <div class="title-container">
             <h5 class="card-title">${task.task}</h5>

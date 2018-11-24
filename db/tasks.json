@@ -2,18 +2,22 @@
   "tasks" : {
     "task1" : {
       "task": "Feed the dog",
+      "created" : "11/24/2018, 8:40:05 AM",
       "isCompleted": false
     },
     "task2" : {
       "task": "Empty trash",
+      "created" : "11/24/2018, 8:41:22 AM",      
       "isCompleted": false
     },
     "task3" : {
       "task": "Practice code",
+      "created" : "11/24/2018, 8:42:39 AM",
       "isCompleted": true
     },
       "task4" : {
       "task": "Ride motorcycle",
+      "created" : "11/24/2018, 8:43:28 AM",
       "isCompleted": false
     }
   }  
