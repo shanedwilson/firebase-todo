@@ -26,7 +26,7 @@ const printTasks = (tasksArray) => {
               <img class="delete-img" data-delete-id=${task.id} src="https://iconsplace.com/wp-content/uploads/_icons/ff0000/256/png/trash-icon-14-256.png">
             </button>
             <button class="edit-btn btn-light edit-btn float-right" data-edit-id=${task.id}>
-              <img class="edit-img" data-edit-id=${task.id} src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Blue_pencil.svg/2000px-Blue_pencil.svg.png">
+              <img class="edit-img" data-edit-id=${task.id} src="https://upload.wikimedia.org/wikipedia/commons/e/e7/1328101864_Edit.png">
             </button>
           </div>
         </div>
