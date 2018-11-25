@@ -20,8 +20,8 @@ body {
 }
 
 .edit-img {
-  max-width: 15px;
-  max-height: 15px;
+  max-width: 20px;
+  max-height: 20px;
 }
 
 #new-task {
@@ -46,4 +46,8 @@ body {
   background-color: grey;
   width: 75%;
   margin-top: 15%;
+}
+
+#edit-form-task-name {
+  width: 90%;
 }
