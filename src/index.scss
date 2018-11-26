@@ -20,8 +20,8 @@ body {
 }
 
 .edit-img {
-  max-width: 20px;
-  max-height: 20px;
+  max-width: 15px;
+  max-height: 15px;
 }
 
 #new-task {
@@ -50,4 +50,8 @@ body {
 
 #edit-form-task-name {
   width: 90%;
+}
+
+.card {
+  box-shadow: 3px 3px lightgray;
 }

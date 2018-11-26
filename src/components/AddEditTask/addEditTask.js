@@ -65,7 +65,7 @@ const showEditForm = (e) => {
   tasksData.getSingleTask(idToEdit)
     .then((singleTask) => {
       const domString = `
-      <div class="col-3 mx-auto">
+      <div class="col-6 mx-auto">
         <div class="card text-white bg-secondary mt-5">
           <div class="card-body">
             <div class="input-group mb-2 mx-auto">  
