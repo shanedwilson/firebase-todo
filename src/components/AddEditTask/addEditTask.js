@@ -16,7 +16,7 @@ const formBuilder = (task) => {
       <div class="input-group-prepend">
         <div class="input-group-text">Completed?</div>
       </div>   
-        <input type="text" class="form-control" id="" value="${task.isCompleted}" id="form-task-completed" placeholder="True/False">
+        <input type="text" class="form-control" value="${task.isCompleted}" id="form-task-completed" placeholder="True/False">
     </div>    
   </div>
   `;
@@ -44,14 +44,14 @@ const showAddForm = () => {
   domString += formBuilder(emptyTask);
   domString += '<button class="mb-3" id="save-task">Save Task</button>';
   $('#all-tasks').hide();
-  $('#add-edit-task').html(domString).show();
+  $('#add-task').html(domString).show();
 };
 
 const addNewTask = () => {
   const newTask = getTaskFromForm();
   tasksData.addNewTask(newTask)
     .then(() => {
-      $('#add-edit-task').html('').hide();
+      $('#add-task').html('').hide();
       $('#all-tasks').show();
       taskPage.tasksPage();
     })
@@ -59,22 +59,6 @@ const addNewTask = () => {
       console.error('error', error);
     });
 };
-
-// const showEditForm = (e) => {
-//   const idToEdit = e.target.dataset.editId;
-//   tasksData.getSingleTask(idToEdit)
-//     .then((singleTask) => {
-//       let domString = '<h2 class="mt-5">Edit Task</h2>';
-//       domString += formBuilder(singleTask);
-//       domString += `<button class="mb-3" id="edit-task"
-// data-single-task-id="${singleTask.id}">Save Task</button>`;
-//       $('#add-edit-task').html(domString).show();
-//       $('#all-tasks').hide();
-//     })
-//     .catch((error) => {
-//       console.error('error in getting single for edit', error);
-//     });
-// };
 
 const showEditForm = (e) => {
   const idToEdit = e.target.dataset.editId;
@@ -104,25 +88,11 @@ const showEditForm = (e) => {
         </div>
       </div>
       `;
-      $('#add-edit-task').html(domString).show();
+      $('#edit-div').html(domString).show();
       $('#all-tasks').hide();
       $('#edit-form-task-name').focus();
     });
 };
-
-// const updateTask = (e) => {
-//   const updatedTask = getTaskFromForm();
-//   const taskId = e.target.dataset.singleTaskId;
-//   tasksData.updateTask(updatedTask, taskId)
-//     .then(() => {
-//       $('#add-edit-task').html('').hide();
-//       $('#all-tasks').show();
-//       taskPage.tasksPage();
-//     })
-//     .catch((error) => {
-//       console.error('error', error);
-//     });
-// };
 
 const updateTask = (e) => {
   const taskId = e.target.dataset.singleTaskId;
@@ -135,7 +105,7 @@ const updateTask = (e) => {
   };
   tasksData.updateTask(updatedTask, taskId)
     .then(() => {
-      $('#add-edit-task').html('').hide();
+      $('#edit-div').html('').hide();
       $('#all-tasks').show();
       taskPage.tasksPage();
     })
@@ -169,6 +139,6 @@ const completeTask = (e) => {
 $('body').on('click', '#save-task', addNewTask);
 $('body').on('click', '.edit-btn', showEditForm);
 $('body').on('click', '#edit-task', updateTask);
-$('body').on('click', completeTask);
+$('body').on('click', '.completed-task', completeTask);
 
 export default { showAddForm };

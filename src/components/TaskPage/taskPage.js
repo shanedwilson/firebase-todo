@@ -1,8 +1,5 @@
 import $ from 'jquery';
 import tasksData from '../../helpers/data/tasksData';
-import timestamp from '../../helpers/timestamp';
-
-console.log(timestamp.utcDate);
 
 const printTasks = (tasksArray) => {
   let domString = '';

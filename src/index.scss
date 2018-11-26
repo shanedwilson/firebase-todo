@@ -10,7 +10,7 @@ body {
   position: relative;
 }
 
-#tasks, #completed {
+#tasks, #completed, #edit-div {
   width: 75%;
 }
 
@@ -42,7 +42,7 @@ body {
   }
 }
 
-#add-edit-task{
+#add-task{
   background-color: grey;
   width: 75%;
   margin-top: 15%;
