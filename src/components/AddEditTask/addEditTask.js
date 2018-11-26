@@ -16,7 +16,7 @@ const formBuilder = (task) => {
       <div class="input-group-prepend">
         <div class="input-group-text">Completed?</div>
       </div>   
-        <input type="text" class="form-control" id="" value="${task.isCompleted}" id="form-task-completed" placeholder="True/False">
+        <input type="text" class="form-control" value="${task.isCompleted}" id="form-task-completed" placeholder="True/False">
     </div>    
   </div>
   `;
@@ -25,7 +25,6 @@ const formBuilder = (task) => {
 
 const getTaskFromForm = () => {
   const completeBoo = JSON.parse($('#form-task-completed').val().toLowerCase());
-  console.log(completeBoo);
   const utcDate = timestamp.currentTime();
   const task = {
     task: $('#form-task-name').val(),
@@ -89,7 +88,7 @@ const showEditForm = (e) => {
         </div>
       </div>
       `;
-      $('#edit-task').html(domString).show();
+      $('#edit-div').html(domString).show();
       $('#all-tasks').hide();
       $('#edit-form-task-name').focus();
     });
@@ -106,7 +105,7 @@ const updateTask = (e) => {
   };
   tasksData.updateTask(updatedTask, taskId)
     .then(() => {
-      $('#edit-task').html('').hide();
+      $('#edit-div').html('').hide();
       $('#all-tasks').show();
       taskPage.tasksPage();
     })
@@ -140,6 +139,6 @@ const completeTask = (e) => {
 $('body').on('click', '#save-task', addNewTask);
 $('body').on('click', '.edit-btn', showEditForm);
 $('body').on('click', '#edit-task', updateTask);
-$('body').on('click', completeTask);
+$('body').on('click', '.completed-task', completeTask);
 
 export default { showAddForm };
