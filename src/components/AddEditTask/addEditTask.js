@@ -81,11 +81,8 @@ const showEditForm = (e) => {
             </div>
           </div>
           <div class="card-footer text-muted">
-            <button class="delete-btn btn-light delete-btn float-left" data-delete-id=${singleTask.id}>
-              <img class="delete-img" data-delete-id=${singleTask.id} src="https://iconsplace.com/wp-content/uploads/_icons/ff0000/256/png/trash-icon-14-256.png">
-            </button>
-            <button class="mb-3 float-right btn-light" id="edit-task" data-single-task-id="${singleTask.id}">Save Task</button>
-            <button class="mb-3 ml-3 btn-danger" id="back-btn">Cancel</button>
+            <button class="mb-3 btn-light float-left" id="edit-task" data-single-task-id="${singleTask.id}">Save Task</button>
+            <button class="mb-3 btn-danger float-right" id="back-btn">Cancel</button>
           </div>
         </div>
       </div>
@@ -118,13 +115,23 @@ const updateTask = (e) => {
 
 const completeTask = (e) => {
   const taskId = e.target.dataset.completedId;
-  const isCompleted = e.target.checked;
-  tasksData.updateIsComplete(taskId, isCompleted)
-    .then(() => {
-      taskPage.tasksPage();
+  tasksData.getSingleTask(taskId)
+    .then((singleTask) => {
+      const utcDate = timestamp.currentTime();
+      const updatedTask = {
+        task: singleTask.task,
+        created: utcDate,
+        isCompleted: e.target.checked,
+      };
+      tasksData.updateTask(updatedTask, taskId)
+        .then(() => {
+          $('#tasks').html('');
+          $('#completed').html('');
+          taskPage.tasksPage();
+        });
     })
     .catch((error) => {
-      console.error('error in updating flag', error);
+      console.error('error in getting single for completed', error);
     });
 };
 
