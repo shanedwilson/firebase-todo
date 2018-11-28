@@ -65,7 +65,7 @@ const showEditForm = (e) => {
   tasksData.getSingleTask(idToEdit)
     .then((singleTask) => {
       const domString = `
-      <div class="col-3 mx-auto">
+      <div class="col-6 mx-auto">
         <div class="card text-white bg-secondary mt-5">
           <div class="card-body">
             <div class="input-group mb-2 mx-auto">  
@@ -116,29 +116,29 @@ const updateTask = (e) => {
 
 const completeTask = (e) => {
   const taskId = e.target.dataset.completedId;
-  tasksData.getSingleTask(taskId)
-    .then((singleTask) => {
-      const utcDate = timestamp.currentTime();
-      const updatedTask = {
-        task: singleTask.task,
-        created: utcDate,
-        isCompleted: e.target.checked,
-      };
-      tasksData.updateTask(updatedTask, taskId)
-        .then(() => {
-          $('#tasks').html('');
-          $('#completed').html('');
-          taskPage.tasksPage();
-        });
+  const isComplete = e.target.checked;
+  tasksData.updateIsComplete(taskId, isComplete)
+    .then(() => {
     })
     .catch((error) => {
-      console.error('error in getting single for completed', error);
+      console.error('error in updating flag', error);
     });
 };
+
+// const udpdateIsAvoiding = (e) => {
+//   const friendId = e.target.id;
+//   const isAvoiding = e.target.checked;
+//   friendsData.updatedIsAvoiding(friendId, isAvoiding)
+//     .then(() => {
+//     })
+//     .catch((err) => {
+//       console.error('error in updating flag', err);
+//     });
+// };
 
 $('body').on('click', '#save-task', addNewTask);
 $('body').on('click', '.edit-btn', showEditForm);
 $('body').on('click', '#edit-task', updateTask);
-$('body').on('click', '.completed-task', completeTask);
+$('body').on('change', '.completed-task', completeTask);
 
 export default { showAddForm };
