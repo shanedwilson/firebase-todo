@@ -19,3 +19,5 @@ const initApp = () => {
 };
 
 initApp();
+
+export default { initApp };

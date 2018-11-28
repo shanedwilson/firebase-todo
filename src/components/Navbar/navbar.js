@@ -14,6 +14,7 @@ const navbarEvents = () => {
       });
     } else if (e.target.id === 'navbar-button-new') {
       $('#new-task').show();
+      $('#navbar-button-new').hide();
       addEditTask.showAddForm();
     } else {
       $('#auth').show();
@@ -24,7 +25,7 @@ const navbarEvents = () => {
 const createNavbar = () => {
   const domString = `
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">ToDo</a>
+  <a class="navbar-brand text-light">ToDo</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
