@@ -2,7 +2,6 @@ import $ from 'jquery';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import addEditTask from '../AddEditTask/addEditTask';
-import taskPage from '../TaskPage/taskPage';
 import './navbar.scss';
 
 const navbarEvents = () => {
@@ -17,12 +16,6 @@ const navbarEvents = () => {
       $('#new-task').show();
       $('#navbar-button-new').hide();
       addEditTask.showAddForm();
-    } else if (e.target.id === 'navbar-button-home') {
-      taskPage.tasksPage();
-      $('#new-task').hide();
-      $('#tasks').show();
-      $('#completed').show();
-      taskPage.tasksPage();
     } else {
       $('#auth').show();
     }
@@ -40,9 +33,6 @@ const createNavbar = () => {
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
         <a id="navbar-button-auth" class="nav-link">Authentication</a>
-      </li> 
-      <li class="nav-item">
-        <a id="navbar-button-home" class="nav-link">Home</a>
       </li> 
       <li class="nav-item">
         <a id="navbar-button-new" class="nav-link">Create Task</a>
