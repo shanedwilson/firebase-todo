@@ -148,5 +148,16 @@ $('body').on('click', '#edit-task', updateTask);
 $('body').on('change', '.completed-task', completeTask);
 $('body').on('click', '#back-btn', refreshPage);
 
+$('body').on('keyup', '#add-task', (e) => {
+  if (e.keyCode === 13) {
+    addNewTask();
+  }
+});
+
+$('body').on('keyup', '#edit-div', (e) => {
+  if (e.keyCode === 13) {
+    updateTask(e);
+  }
+});
 
 export default { showAddForm };
