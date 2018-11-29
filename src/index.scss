@@ -3,11 +3,13 @@
 body {
   background-color: rgb(128, 204, 141);
   background-image: url("https://png.pngtree.com/element_origin_min_pic/17/08/05/8ba05af80d01df4f8d3167bf24383d9f.jpg");
-  height: 500px;
   background-position: center;
-  background-repeat: no-repeat;
   background-size: cover;
-  position: relative;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  height: 100%;
+  overflow: hidden;
 }
 
 #tasks, #completed, #edit-div {
@@ -54,4 +56,8 @@ body {
 
 .card {
   box-shadow: 3px 3px lightgray;
+}
+
+#edit-div {
+  margin-top: 15%;
 }
