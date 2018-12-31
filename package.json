@@ -7,7 +7,8 @@
     "build": "NODE_ENV=production webpack",
     "lint": "eslint ./src --ext .js --fix",
     "dev": "NODE_ENV=development webpack-dev-server --content-base dist --hot",
-    "start": "npm run lint && npm run dev"
+    "start": "npm run lint && npm run dev",
+    "deploy": "npm run build && firebase deploy"
   },
   "repository": {
     "type": "git",
